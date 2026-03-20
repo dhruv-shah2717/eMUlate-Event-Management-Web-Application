@@ -99,7 +99,7 @@ const Category = () => {
 
             if (response.ok) {
                 toast.success(result.message);
-                fetchCategories();
+                setCategories(prev => prev.filter(cat => cat._id !== id));
             } else {
                 toast.error(result.message);
             }
@@ -233,7 +233,7 @@ const Category = () => {
                             ) : (
                                 <tr>
                                     <td colSpan="4" className="text-center">
-                                        No Categories Found
+                                        Categories loading or No Categories Found
                                     </td>
                                 </tr>
                             )}

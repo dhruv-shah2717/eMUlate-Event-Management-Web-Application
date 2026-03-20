@@ -68,9 +68,13 @@ const Dashboard = () => {
                 fetch(`${baseUrl}/api/registration`)
             ]);
 
-            const studentData = await studentRes.json();
-            const eventData = await eventRes.json();
-            const regData = await regRes.json();
+            const studentRaw = await studentRes.json();
+            const eventRaw = await eventRes.json();
+            const regRaw = await regRes.json();
+
+            const studentData = Array.isArray(studentRaw) ? studentRaw : studentRaw.data || [];
+            const eventData = Array.isArray(eventRaw) ? eventRaw : eventRaw.data || [];
+            const regData = Array.isArray(regRaw) ? regRaw : regRaw.data || [];
 
             if (studentRes.ok) {
                 const successfulRegs = regData.filter(reg => reg.Payment === 'Success');
@@ -180,9 +184,16 @@ const Dashboard = () => {
             });
             const result = await res.json();
             if (res.ok) {
-                toast.success(result.message);
-                fetchDashboardData();
-            } else {
+            toast.success(result.message);
+
+            setStudents(prev => prev.filter(stu => stu._id !== id));
+
+            setStats(prev => ({
+                ...prev,
+                studentCount: prev.studentCount - 1
+            }));
+
+        } else {
                 toast.error(result.message);
             }
         } catch (err) {
@@ -318,7 +329,7 @@ const Dashboard = () => {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="6" className="text-center">No Students Found</td>
+                                    <td colSpan="6" className="text-center">Students loading or No Students Found</td>
                                 </tr>
                             )}
                         </tbody>

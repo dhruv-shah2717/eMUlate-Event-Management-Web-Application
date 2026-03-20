@@ -53,7 +53,7 @@ const Product = () => {
                 <div className="d-flex justify-content-center">
                     <div className="event-main-card">
                         <div className="text-center">
-                            Event Not Found
+                            Event loading or Event Not Found
                         </div>
                     </div>
                 </div>

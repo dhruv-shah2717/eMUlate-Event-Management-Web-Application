@@ -68,7 +68,7 @@ const AdminRegistration = () => {
             const result = await response.json();
             if (response.ok) {
                 toast.success(result.message);
-                fetchRegistrations();
+                setRegistrations(prev => prev.filter(reg => reg._id !== id));
             } else {
                 toast.error(result.message);
             }
@@ -151,7 +151,8 @@ const AdminRegistration = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {registrations.map((reg, index) => (
+                            {registrations.length > 0 ? (
+                                registrations.map((reg, index) => (
                                 <tr key={reg._id}>
                                     <td>{index + 1}</td>
                                     <td>{reg.Evn_Id?.Name}</td>
@@ -172,12 +173,22 @@ const AdminRegistration = () => {
                                         </button>
                                     </td>
                                     <td>
-                                        <button className="btn btn-danger btn-sm" onClick={() => handleDelete(reg._id)}>
+                                        <button
+                                            className="btn btn-danger btn-sm"
+                                            onClick={() => handleDelete(reg._id)}
+                                        >
                                             Delete
                                         </button>
                                     </td>
                                 </tr>
-                            ))}
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="6" className="text-center">
+                                        Registrations loading or No Registrations Found
+                                    </td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>

@@ -95,7 +95,7 @@ const Event = () => {
             const result = await response.json();
             if (response.ok) {
                 toast.success(result.message);
-                fetchEvents();
+                setEvents(prev => prev.filter(ev => ev._id !== id));
             } else {
                 toast.error(result.message);
             }
@@ -515,33 +515,41 @@ const Event = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {events.map((ev, index) => (
+                            {events.length > 0 ? (
+                                events.map((ev, index) => (
                                 <tr key={ev._id}>
                                     <td>{index + 1}</td>
                                     <td>{ev.Name}</td>
                                     <td>{ev.Cat_Id?.Name}</td>
                                     <td>{ev.Price}</td>
                                     <td>
-                                        <button
-                                            className="btn btn-success btn-sm"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#updateModal"
-                                            onClick={() => handleEditClick(ev)}
-                                        >
-                                            Update
-                                        </button>
+                                    <button
+                                        className="btn btn-success btn-sm"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#updateModal"
+                                        onClick={() => handleEditClick(ev)}
+                                    >
+                                        Update
+                                    </button>
                                     </td>
                                     <td>
-                                        <button
-                                            className="btn btn-danger btn-sm"
-                                            onClick={() => handleDelete(ev._id)}
-                                        >
-                                            Delete
-                                        </button>
+                                    <button
+                                        className="btn btn-danger btn-sm"
+                                        onClick={() => handleDelete(ev._id)}
+                                    >
+                                        Delete
+                                    </button>
                                     </td>
                                 </tr>
-                            ))}
-                        </tbody>
+                                ))
+                            ) : (
+                                <tr>
+                                <td colSpan="6" className="text-center">
+                                    Events loading or No Events Found
+                                </td>
+                                </tr>
+                            )}
+                    </tbody>
                     </table>
                 </div>
             </div>
