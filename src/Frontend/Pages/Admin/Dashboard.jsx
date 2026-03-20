@@ -184,16 +184,16 @@ const Dashboard = () => {
             });
             const result = await res.json();
             if (res.ok) {
-            toast.success(result.message);
+                toast.success(result.message);
 
-            setStudents(prev => prev.filter(stu => stu._id !== id));
+                setStudents(prev => prev.filter(stu => stu._id !== id));
 
-            setStats(prev => ({
-                ...prev,
-                studentCount: prev.studentCount - 1
-            }));
+                setStats(prev => ({
+                    ...prev,
+                    studentCount: prev.studentCount - 1
+                }));
 
-        } else {
+            } else {
                 toast.error(result.message);
             }
         } catch (err) {

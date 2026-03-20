@@ -174,9 +174,7 @@ const AdminRegistration = () => {
                                     </td>
                                     <td>
                                         <button
-                                            className="btn btn-danger btn-sm"
-                                            onClick={() => handleDelete(reg._id)}
-                                        >
+                                            className="btn btn-danger btn-sm" onClick={() => handleDelete(reg._id)}>
                                             Delete
                                         </button>
                                     </td>

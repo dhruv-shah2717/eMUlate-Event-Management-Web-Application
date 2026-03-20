@@ -523,22 +523,22 @@ const Event = () => {
                                     <td>{ev.Cat_Id?.Name}</td>
                                     <td>{ev.Price}</td>
                                     <td>
-                                    <button
-                                        className="btn btn-success btn-sm"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#updateModal"
-                                        onClick={() => handleEditClick(ev)}
-                                    >
-                                        Update
-                                    </button>
+                                        <button
+                                            className="btn btn-success btn-sm"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#updateModal"
+                                            onClick={() => handleEditClick(ev)}
+                                        >
+                                            Update
+                                        </button>
                                     </td>
                                     <td>
-                                    <button
-                                        className="btn btn-danger btn-sm"
-                                        onClick={() => handleDelete(ev._id)}
-                                    >
-                                        Delete
-                                    </button>
+                                        <button
+                                            className="btn btn-danger btn-sm"
+                                            onClick={() => handleDelete(ev._id)}
+                                        >
+                                            Delete
+                                        </button>
                                     </td>
                                 </tr>
                                 ))
