@@ -544,9 +544,9 @@ const Event = () => {
                                 ))
                             ) : (
                                 <tr>
-                                <td colSpan="6" className="text-center">
-                                    Events loading or No Events Found
-                                </td>
+                                    <td colSpan="6" className="text-center">
+                                        Events loading or No Events Found
+                                    </td>
                                 </tr>
                             )}
                     </tbody>
