@@ -52,7 +52,7 @@ The <strong>Admin Panel</strong> allows complete control over events, categories
 <h1>What Changes Have Been Made</h1>
 <ul>
     <li>Integrated <strong>MongoDB Atlas</strong> as the cloud database.</li>
-    <li>Added the MongoDB database. The database file is provided in the project folder as src/Backend/Database allcollection.json.</li>
+    <li>Added the MongoDB database. The database file is provided in the project folder as src/Backend/Database/allcollection.json.</li>
     <li>Updated environment configuration for MongoDB connection.</li>
     <li>Rename <strong>.env.example</strong> to <strong>.env</strong> and update the environment variables.</li>
     <li>Installed all required project dependencies using <strong>npm install</strong>.</li>
